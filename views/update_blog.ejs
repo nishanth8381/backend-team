@@ -42,11 +42,14 @@
         <div class="Talk-show optional">
             <div class="form-group">
                 <label>Chief Guest</label>
-                <input class="form-control" name="chief_guest" value="<%=summary.chief_guest||'NULL'%>">>
+                <input class="form-control" name="chief_guest" value="<%=summary.chief_guest||'NULL'%>">
                 </div>
             <div class="form-group">
                 <label>Chief Guest URL</label>
-                <input type="file" accept='image/*' name="chief_guest_url" id="chief_guest_url" onchange="imageCompressor(event);">
+                <% if((summary.chief_guest_url) && (summary.chief_guest_url).length){ %>
+                        <img src="/images/<%=summary.chief_guest_url%>" alt="image" width="100px" height="100px">
+                        <%  } %>
+                <input type="file" accept='image/*' name="chief_guest_url" id="chief_guest_url" onchange="imageCompressor(event);" value="/images/<%=summary.chief_guest_url||'NULL'%>">
             </div>
         </div>
         <div class="Activity optional">
